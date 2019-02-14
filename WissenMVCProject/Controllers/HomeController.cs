@@ -24,6 +24,17 @@ namespace WissenMVCProject.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult DenemeForm(WissenMVCProject.Models.DenemeForm model)
+        {
+            if (ModelState.IsValid)
+            {
+                //TODO: Mail gönder
+                ViewBag.Message = "Mail başarıyla gönderildi.";
+                return View();
+            }
+            return View();
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
