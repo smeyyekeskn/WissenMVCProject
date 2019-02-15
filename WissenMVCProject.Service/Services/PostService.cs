@@ -24,6 +24,7 @@ namespace WissenMVCProject.Service.Services
             if (postToDelete != null)
             {
                 repository.Delete(postToDelete);
+                repository.SaveChanges();
 
             }
         }
@@ -56,11 +57,13 @@ namespace WissenMVCProject.Service.Services
         public void Insert(Post post)
         {
             repository.Insert(post);
+            repository.SaveChanges();
         }
 
         public void Update(Post post)
         {
             repository.Update(post);
+            repository.SaveChanges();
         }
     }
 }

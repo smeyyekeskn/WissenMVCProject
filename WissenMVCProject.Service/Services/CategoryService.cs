@@ -23,6 +23,7 @@ namespace WissenMVCProject.Service
             if (categoryToDelete != null)
             {
                 repository.Delete(categoryToDelete);
+                repository.SaveChanges();
 
             }
         }
@@ -55,11 +56,13 @@ namespace WissenMVCProject.Service
         public void Insert(Category category)
         {
             repository.Insert(category);
+            repository.SaveChanges();
         }
 
         public void Update(Category category)
         {
             repository.Update(category);
+            repository.SaveChanges();
         }
     }
 }
