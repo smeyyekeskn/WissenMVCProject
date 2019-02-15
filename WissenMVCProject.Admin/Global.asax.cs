@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace WissenMVCProject
+namespace WissenMVCProject.Admin
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -41,7 +41,6 @@ namespace WissenMVCProject
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-
         }
     }
 }

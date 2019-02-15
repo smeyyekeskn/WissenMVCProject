@@ -15,7 +15,7 @@ $(function() {
 });
 
 
-<!-- Toggle -->			
+// Toggle 		
 	$('.togglehandle').click(function()
 	{
 		$(this).toggleClass('active')
@@ -28,8 +28,7 @@ $(function() {
 	$(this).parent('.alert').fadeOut ()
 	});	
 	
-
-<!-- Tooltip -->	
+// Tooltip	
 $('.tooltip-test').tooltip();
 
 
@@ -43,7 +42,7 @@ function toggleChevron(e) {
 $('#accordion').on('hidden.bs.collapse shown.bs.collapse', toggleChevron);
 //End accordion v.2.1			
 
-<!-- News stip clickable-->				   
+// News stip clickable				   
 $(".news-strip ul li").click(function(){
     window.location=$(this).find("a").attr("href");return false;
 });
