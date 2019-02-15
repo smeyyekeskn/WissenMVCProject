@@ -29,8 +29,38 @@ namespace WissenMVCProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                //TODO: Mail gönder
-                ViewBag.Message = "Mail başarıyla gönderildi.";
+                bool hasError = false;
+                try
+                {
+                    System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();
+                    mailMessage.From = new System.Net.Mail.MailAddress("kutlugungor58@gmail.com", "Wissen");
+                    mailMessage.Subject = "İletişim Formu: " + model.FirstName + " " + model.LastName;
+                    mailMessage.To.Add("smeyyekeskn@gmail.com");
+
+                    string body;
+                    body = "Ad: " + model.FirstName + "<br />";
+                    body = "Soyad: " + model.LastName + "<br />";
+                    body += "Telefon: " + model.Phone + "<br />";
+                    body += "E-posta: " + model.Email + "<br />";
+
+                    mailMessage.IsBodyHtml = true;
+                    mailMessage.Body = body;
+
+                    System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
+                    smtp.Credentials = new System.Net.NetworkCredential("kutlugungor58@gmail.com", "****************");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mailMessage);
+
+                }catch(Exception ex)              
+                {
+                    ModelState.AddModelError("Error", ex.Message);
+                    hasError = true;
+                    
+                }
+                if (hasError == false)
+                {
+                    ViewBag.Message = "Mail başarıyla gönderildi.";
+                }
                 return View();
             }
             return View();
@@ -44,7 +74,7 @@ namespace WissenMVCProject.Controllers
         [HttpPost]
         public ActionResult Contact(string firstName, string lastName, string email, string phone, string department,string message)
         {
-            //sunucu validasyonu
+            //Sunucu validasyonu
             firstName = firstName.Trim();
             lastName = lastName.Trim();
             email = email.Trim();

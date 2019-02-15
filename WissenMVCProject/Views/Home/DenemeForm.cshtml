@@ -7,11 +7,16 @@
 <!--Html Helper Yöntemi ile-->
 <div class="row">
     <div class="col-md-6">
+        @if(ViewBag.Message != null)
+        {
+            <div class="alert alert-success">@ViewBag.Message</div>
+        }
 
         @using (Html.BeginForm())
         {
             <div class="form-horizontal">
-                @Html.ValidationSummary(true)
+                @Html.ValidationSummary(true, "",new { @class="text-danger"})
+                @Html.ValidationMessage("Error")
                 <div class="form-group">
                     @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
