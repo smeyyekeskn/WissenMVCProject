@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WissenMVCProject.Service.Services;
 
 namespace WissenMVCProject.Admin.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ICategoryService categoryService;
+        public HomeController(ICategoryService categoryService)
+        {
+            this.categoryService = categoryService;
+        }
+        public ActionResult Test()
+        {
+            var categories = categoryService.GetAll();
+            return View(categories);
+
+        }
         public ActionResult Index()
         {
             return View();
