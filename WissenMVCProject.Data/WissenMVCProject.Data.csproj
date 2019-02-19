@@ -68,6 +68,14 @@
     <Compile Include="Migrations\201902181116478_ChangeHasOptional.Designer.cs">
       <DependentUpon>201902181116478_ChangeHasOptional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902190745378_AddToPostDataAnnotationMultilineText.cs" />
+    <Compile Include="Migrations\201902190745378_AddToPostDataAnnotationMultilineText.Designer.cs">
+      <DependentUpon>201902190745378_AddToPostDataAnnotationMultilineText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902190748117_EditToPostDataAnnotationMultiline.cs" />
+    <Compile Include="Migrations\201902190748117_EditToPostDataAnnotationMultiline.Designer.cs">
+      <DependentUpon>201902190748117_EditToPostDataAnnotationMultiline.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -94,6 +102,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902181116478_ChangeHasOptional.resx">
       <DependentUpon>201902181116478_ChangeHasOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902190745378_AddToPostDataAnnotationMultilineText.resx">
+      <DependentUpon>201902190745378_AddToPostDataAnnotationMultilineText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902190748117_EditToPostDataAnnotationMultiline.resx">
+      <DependentUpon>201902190748117_EditToPostDataAnnotationMultiline.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

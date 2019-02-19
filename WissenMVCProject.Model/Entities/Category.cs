@@ -18,6 +18,7 @@ namespace WissenMVCProject.Model
         public string Name { get; set; }
 
         [Display(Name = "Açıklama")]
+        [DataType(DataType.MultilineText)]
         [Required]
         public string Description { get; set; }
 

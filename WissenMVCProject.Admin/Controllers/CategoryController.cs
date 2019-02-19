@@ -29,7 +29,9 @@ namespace WissenMVCProject.Admin.Controllers
             var category = new Category();
             return View(category);
         }
+
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(Category category)
         {
             if (ModelState.IsValid)
@@ -39,6 +41,7 @@ namespace WissenMVCProject.Admin.Controllers
             }
             return View();
         }
+
         public ActionResult Edit(int id)
         {
             var category = categoryService.Find(id);
@@ -48,7 +51,9 @@ namespace WissenMVCProject.Admin.Controllers
             }
             return View(category);
         }
+
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(Category category)
         {
             if (ModelState.IsValid)
@@ -65,9 +70,17 @@ namespace WissenMVCProject.Admin.Controllers
         public ActionResult Delete(int id)
         {         
              categoryService.Delete(id);
-             return RedirectToAction("Index");
-            
-            
+             return RedirectToAction("Index");                     
+        }
+        public ActionResult Details(int id)
+        {
+            var category = categoryService.Find(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category);
+
         }
     }
 }

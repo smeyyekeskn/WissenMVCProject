@@ -15,7 +15,7 @@ namespace WissenMVCProject.Admin.Controllers
         public PostController(IPostService postService, ICategoryService categoryService)
         {
             this.postService = postService;
-            this.categoryService = categoryService;
+            this.categoryService = categoryService;             
 
         }
         // GET: Post
@@ -31,6 +31,7 @@ namespace WissenMVCProject.Admin.Controllers
             return View(post);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(Post post)
         {
             if (ModelState.IsValid)
@@ -38,7 +39,7 @@ namespace WissenMVCProject.Admin.Controllers
                 postService.Insert(post);
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name",post.CategoryId);
+            ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", post.CategoryId);
             return View();
         }
         public ActionResult Edit(int id)
@@ -52,6 +53,7 @@ namespace WissenMVCProject.Admin.Controllers
             return View(post);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(Post post)
         {
             if (ModelState.IsValid)
@@ -60,7 +62,7 @@ namespace WissenMVCProject.Admin.Controllers
                 model.Title = post.Title;
                 model.Description = post.Description;
                 model.CategoryId = post.CategoryId;
-                postService.Update(model);               
+                postService.Update(model);
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", post.CategoryId);
@@ -71,9 +73,16 @@ namespace WissenMVCProject.Admin.Controllers
             postService.Delete(id);
             return RedirectToAction("Index");
         }
+        
+        public ActionResult Details(int id)
+        {
+            var post = postService.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
 
-
-
-
+        }
     }
 }
